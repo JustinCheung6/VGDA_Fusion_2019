@@ -9,6 +9,8 @@ public class Fridge : OpenCloseDoors
 
     public GameObject pickupPrefab;
     public Transform content;
+    public AudioSource FridgeOpenSound;
+    public AudioSource FridgeCloseSound;
 
     public void Start()
     {
@@ -21,6 +23,7 @@ public class Fridge : OpenCloseDoors
         SpawnNewItem();
         Debug.Log("Fridge Opened");
         FridgeDoor.SetBool("doorOpened", true);
+        FridgeOpenSound.Play();
         content.gameObject.SetActive(true);
     }
 
@@ -29,6 +32,7 @@ public class Fridge : OpenCloseDoors
         base.OnCloseDoor();
         Debug.Log("Fridge Closed");
         FridgeDoor.SetBool("doorOpened", false);
+        FridgeCloseSound.Play();
         content.gameObject.SetActive(false);
     }
     private void SpawnNewItem()

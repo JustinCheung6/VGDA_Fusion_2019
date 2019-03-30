@@ -7,6 +7,8 @@ public class ExplosionHandler : MonoBehaviour
     [SerializeField] 
     private ParticleSystem explosion;
 
+    public AudioSource explosionSound;
+
     private void OnEnable()
     {
         Ticker.OnDeathEvent += TriggerExplosion;
@@ -20,6 +22,7 @@ public class ExplosionHandler : MonoBehaviour
     private void TriggerExplosion()
     {
         explosion.Play();
+        explosionSound.Play();
         Ticker.OnDeathEvent -= TriggerExplosion;
     }
     

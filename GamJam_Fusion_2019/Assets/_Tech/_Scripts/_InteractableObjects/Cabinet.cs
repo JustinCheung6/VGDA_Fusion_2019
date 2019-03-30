@@ -8,6 +8,9 @@ public class Cabinet : OpenCloseDoors
     private Animator leftDoor;
     [SerializeField]
     private Animator rightDoor;
+
+    public AudioSource OpenCabinetDoorSound;
+    public AudioSource CloseCabinetDoorSound;
     
     public override void OnOpenDoor()
     {
@@ -16,6 +19,7 @@ public class Cabinet : OpenCloseDoors
         GameObject wasabiClone = Instantiate(transform.GetChild(transform.childCount - 1).gameObject);
         wasabiClone.transform.position = transform.GetChild(transform.childCount - 1).position;
         wasabiClone.transform.SetParent(transform);
+        OpenCabinetDoorSound.Play();
         leftDoor.SetBool("doorOpened", true);
         rightDoor.SetBool("doorOpened", true);
     }
@@ -24,6 +28,7 @@ public class Cabinet : OpenCloseDoors
     {
         base.OnCloseDoor();
         Debug.Log("Cabinet Closed");
+        CloseCabinetDoorSound.Play();
         leftDoor.SetBool("doorOpened", false);
         rightDoor.SetBool("doorOpened", false);
     }

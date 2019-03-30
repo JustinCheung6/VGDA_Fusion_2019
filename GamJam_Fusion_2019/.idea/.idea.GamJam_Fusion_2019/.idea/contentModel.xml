@@ -22,6 +22,7 @@
               <e p="Wasabi.cs" t="Include" />
             </e>
             <e p="Camera_Control.cs" t="Include" />
+            <e p="ExplosionHandler.cs" t="Include" />
             <e p="Player_Movement.cs" t="Include" />
             <e p="StartHandler.cs" t="Include" />
             <e p="UpdateHandler.cs" t="Include" />
@@ -40,7 +41,6 @@
             <e p="PackageImportList.txt" t="Include" />
           </e>
         </e>
-        <e p="ExplosionHandler.cs" t="Include" />
         <e p="Particle Pack" t="Include">
           <e p="EffectExamples" t="Include">
             <e p="Magic Effects" t="Include">
