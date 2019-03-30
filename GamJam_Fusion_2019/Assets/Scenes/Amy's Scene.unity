@@ -258,12 +258,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e01dc14e30ee70c4da97ef26ee4708b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  interactable: {fileID: 0}
+  ticktock: {fileID: 0}
+  playerScore: {fileID: 0}
   name: Object Name
   quantity: 1
   meterChange: 0
   player: {fileID: 0}
+  inventory: {fileID: 0}
   dropOffZone: {fileID: 0}
   bufferDistance: 6
+  OnDropOff:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!135 &145757366
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1512,6 +1521,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 451e388dc6dc6fa47aeb4518d84ccfc4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  interactable: {fileID: 0}
+  FridgeDoor: {fileID: 0}
 --- !u!114 &1360495073
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1526,7 +1537,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 708400723}
   bufferDistance: 6
-  currentInteraction: 2
 --- !u!65 &1360495074
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1952,7 +1962,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 708400723}
   bufferDistance: 6
-  currentInteraction: 1
 --- !u!65 &1795931729
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2318,6 +2327,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4bf70b924636190488eb1e5a42c0dcc0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  interactable: {fileID: 0}
+  leftDoor: {fileID: 0}
+  rightDoor: {fileID: 0}
 --- !u!114 &2053034405
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2332,7 +2344,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 708400723}
   bufferDistance: 6
-  currentInteraction: 2
 --- !u!65 &2053034406
 BoxCollider:
   m_ObjectHideFlags: 0
