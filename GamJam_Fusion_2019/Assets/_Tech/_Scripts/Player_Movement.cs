@@ -11,25 +11,27 @@ public class Player_Movement : MonoBehaviour
 
     private CharacterController _charCont;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        _charCont = GetComponent<CharacterController>();
-        
-    }
+
 
     private void OnEnable()
     {
-        UpdateHandler.UpdateOccurred += Movement;
+        StartHandler.StartOccurred += GetCharacterControllerComponent;
+        UpdateHandler.UpdateOccurred += ControlPlayerMovement;
     }
 
     private void OnDisable()
     {
-        UpdateHandler.UpdateOccurred -= Movement;
+        StartHandler.StartOccurred -= GetCharacterControllerComponent;
+        UpdateHandler.UpdateOccurred -= ControlPlayerMovement;
     }
 
-    // Update is called once per frame
-    void Movement()
+    void GetCharacterControllerComponent()
+    {
+        _charCont = GetComponent<CharacterController>();
+
+    }
+
+    void ControlPlayerMovement()
     {
         float deltaX = Input.GetAxis("Horizontal") * speed;
         float deltaZ = Input.GetAxis("Vertical") * speed;
