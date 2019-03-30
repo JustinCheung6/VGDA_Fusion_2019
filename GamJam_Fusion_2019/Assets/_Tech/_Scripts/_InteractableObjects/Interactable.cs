@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class Interactable : MonoBehaviour
 {
+    // Take Place Object Events
+    public delegate void onTakePlaceInteract();
+    public static event onTakePlaceInteract takePlaceInteracted;
+
     // Fridge Events
     public delegate void onFridgeInteract();
     public static event onFridgeInteract fridgeInteracted;
@@ -61,7 +65,10 @@ public class Interactable : MonoBehaviour
                     break;
                 case (Interaction) 1:
                     Debug.Log("Case 1: Object Taken/Placed");
-                    
+                    if (takePlaceInteracted != null)
+                    {
+                        takePlaceInteracted();
+                    }
                     break;
                 case (Interaction) 2:
                     Debug.Log("Case 2: Door Opened/Closed");

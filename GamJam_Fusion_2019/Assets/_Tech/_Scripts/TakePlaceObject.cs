@@ -6,15 +6,31 @@ public class TakePlaceObject : MonoBehaviour
 {
     private bool taken = false;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+    // Objects avalible
+    public enum Objects {
+        Nothing = 0,
+        Tuna = 1,
+        Wasabi = 2
     }
 
-    // Update is called once per frame
-    void Update()
+    //[SerializeField] private 
+    private void OnEnable()
     {
-        
+        Interactable.takePlaceInteracted += handleObject;
+    }
+
+    private void OnDisable()
+    {
+        Interactable.takePlaceInteracted -= handleObject;
+    }
+
+    private void handleObject() {
+        if (taken)
+        {
+            Debug.Log("Placed Object");
+        }
+        else {
+            Debug.Log("Object Taken");
+        }
     }
 }
