@@ -4,10 +4,17 @@ using UnityEngine;
 
 public class Interactable : MonoBehaviour
 {
-    public GameObject player;
-    public GameObject interact;
+    [SerializeField] private GameObject player;
+    private GameObject interact;
 
-    public float bufferDistance = 3f;
+    [SerializeField] private float bufferDistance = 3f;
+
+    public enum Interaction {
+        TakeObject = 0,
+        PlaceObject = 1
+    }
+
+
     // Start is called before the first frame update
     void Start()
     {
