@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class Interactable : MonoBehaviour
 {
+
+    public delegate void onFridgeInteract();
+    public static event onFridgeInteract fridgeInteracted;
+
     [SerializeField] private GameObject player;
     private Transform interactPos;
 
@@ -53,9 +57,13 @@ public class Interactable : MonoBehaviour
                     break;
                 case (Interaction) 1:
                     Debug.Log("Case 1: Object Taken/Placed");
+                    
                     break;
                 case (Interaction) 2:
                     Debug.Log("Case 2: Door Opened/Closed");
+                    if (fridgeInteracted != null) {
+                        fridgeInteracted();
+                    }
                     break;
                 default:
                     Debug.Log("Default Case: Nothing Happened");
