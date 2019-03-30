@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class Player_Movement : MonoBehaviour
 {
-
+    // Walking speed
     [SerializeField] private float speed = 6.0f;
+
+    // Gravity -- effects vertical movement
     [SerializeField] private float gravity = -9.8f;
 
-
+    // Character controller 
     private CharacterController _charCont;
-
-
 
     private void OnEnable()
     {
