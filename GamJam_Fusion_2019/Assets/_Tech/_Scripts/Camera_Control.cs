@@ -13,10 +13,15 @@ public class Camera_Control : MonoBehaviour
     public RotationAxis axes = RotationAxis.MouseX;
 
     //public float minimumVert = -45.0f;
-    
-    [SerializeField]
+
     private float minimumVert = -45.0f;
-    
+
+    public float maximumVert = 45.0f;
+
+    public float camersensHorizontal = 10.0f;
+    public float sensVertical = 10.0f;
+
+    public float _rotationX = 0;
     
 /*
 
@@ -32,14 +37,6 @@ public class Camera_Control : MonoBehaviour
         }
     }*/
 
-
-    public float maximumVert = 45.0f;
-
-    public float sensHorizontal = 10.0f;
-    public float sensVertical = 10.0f;
-
-    public float _rotationX = 0;
-
     private void OnEnable()
     {
         UpdateHandler.UpdateOccured += CameraInputHandler;
@@ -50,10 +47,11 @@ public class Camera_Control : MonoBehaviour
         UpdateHandler.UpdateOccured -= CameraInputHandler;
     }
 
+    
     private void CameraInputHandler()
     {
         if (axes == RotationAxis.MouseX) {
-            transform.Rotate(0, Input.GetAxis("Mouse X") * sensHorizontal, 0);
+            transform.Rotate(0, Input.GetAxis("Mouse X") * camersensHorizontal, 0);
         } else if (axes == RotationAxis.MouseY) {
             _rotationX -= Input.GetAxis("Mouse Y") * sensVertical;
             

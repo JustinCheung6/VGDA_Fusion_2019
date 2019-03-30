@@ -17,7 +17,18 @@ public class Ticker : MonoBehaviour
     {
         currentTicker = GetComponent<Image>();
     }
-    private void Update()
+
+    private void OnEnable()
+    {
+        UpdateHandler.UpdateOccured += UpdateRemainingTime;
+    }
+
+    private void OnDisable()
+    {
+        UpdateHandler.UpdateOccured -= UpdateRemainingTime;
+    }
+
+    private void UpdateRemainingTime()
     {
         if (timeLeft < maxTime)
         {
