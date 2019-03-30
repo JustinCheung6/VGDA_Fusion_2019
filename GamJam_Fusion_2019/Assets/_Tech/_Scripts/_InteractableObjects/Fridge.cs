@@ -4,16 +4,21 @@ using UnityEngine;
 
 public class Fridge : MonoBehaviour
 {
+    public Interactable interactable;
     private bool isOpen = false;
 
     private void OnEnable()
     {
-        Interactable.fridgeInteracted += handleDoorFridge;
+        if (interactable == null)
+        {
+            interactable = GetComponent<Interactable>();
+        }
+        interactable.OnInteract += handleDoorFridge;
     }
 
     private void OnDisable()
     {
-        Interactable.fridgeInteracted -= handleDoorFridge;
+        interactable.OnInteract -= handleDoorFridge;
     }
 
     private void handleDoorFridge() {
