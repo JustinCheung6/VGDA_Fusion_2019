@@ -5,10 +5,15 @@ using UnityEngine;
 
 public class Ticker : MonoBehaviour
 {
+    public delegate void OnDeath();
+
+    public static event OnDeath OnDeathEvent ;
+    
     public Image currentTicker;
     public Text ratioText;
 
     private float timeLeft = 0;
+    [SerializeField]
     private float maxTime = 10;
 
     //eat my candy ass
@@ -16,6 +21,7 @@ public class Ticker : MonoBehaviour
     private void Start()
     {
         currentTicker = GetComponent<Image>();
+        Debug.Log("Showing Console info");
     }
 
     private void OnEnable()
@@ -36,7 +42,13 @@ public class Ticker : MonoBehaviour
         }
         else
         {
-            Time.timeScale = 0;
+            if (OnDeathEvent != null)
+            {
+                OnDeathEvent();
+                Debug.Log("Event Triggered");
+
+            }
+            //Time.timeScale = 0;
         }
     }
     private void updateTicker()
@@ -63,6 +75,14 @@ public class Ticker : MonoBehaviour
         {
             timeLeft = 0;
             Debug.Log("dead");
+            if (OnDeathEvent != null)
+            {
+                OnDeathEvent();
+                Debug.Log("Event Triggered");
+
+            }
+            
+                
         }
         updateTicker();
     }
