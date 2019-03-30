@@ -577,6 +577,7 @@ GameObject:
   - component: {fileID: 697957632}
   - component: {fileID: 697957631}
   - component: {fileID: 697957634}
+  - component: {fileID: 697957635}
   m_Layer: 0
   m_Name: Cabinet
   m_TagString: Untagged
@@ -671,6 +672,18 @@ MonoBehaviour:
   player: {fileID: 1072490653}
   bufferDistance: 6
   currentInteraction: 2
+--- !u!114 &697957635
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 697957629}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4bf70b924636190488eb1e5a42c0dcc0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &764885667
 GameObject:
   m_ObjectHideFlags: 0

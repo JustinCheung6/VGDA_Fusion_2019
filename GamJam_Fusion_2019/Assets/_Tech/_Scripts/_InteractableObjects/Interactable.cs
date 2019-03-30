@@ -4,9 +4,13 @@ using UnityEngine;
 
 public class Interactable : MonoBehaviour
 {
-
+    // Fridge Events
     public delegate void onFridgeInteract();
     public static event onFridgeInteract fridgeInteracted;
+
+    // Cabinet Events
+    public delegate void onCabinetInteract();
+    public static event onCabinetInteract cabinetInteracted;
 
     [SerializeField] private GameObject player;
     private Transform interactPos;
@@ -63,6 +67,9 @@ public class Interactable : MonoBehaviour
                     Debug.Log("Case 2: Door Opened/Closed");
                     if (fridgeInteracted != null) {
                         fridgeInteracted();
+                    }
+                    if (cabinetInteracted != null) {
+                        cabinetInteracted();
                     }
                     break;
                 default:
