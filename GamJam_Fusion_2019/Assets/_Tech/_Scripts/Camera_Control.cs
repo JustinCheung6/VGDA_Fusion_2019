@@ -24,7 +24,6 @@ public class Camera_Control : MonoBehaviour
     public float _rotationX = 0;
     
 /*
-
     public float minimumVert
     {
         get

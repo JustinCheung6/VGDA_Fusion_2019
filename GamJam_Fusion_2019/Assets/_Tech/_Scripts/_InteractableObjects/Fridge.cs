@@ -1,30 +1,24 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
-public class Fridge : MonoBehaviour
+public class Fridge : OpenCloseDoors
 {
-    private bool isOpen = false;
-
-    private void OnEnable()
-    {
-        Interactable.fridgeInteracted += handleDoorFridge;
+    [SerializeField] private Animator FridgeDoor;
+    
+    public override void OnOpenDoor() {
+        base.OnOpenDoor();
+        Debug.Log("Fridge Opened");
+        FridgeDoor.SetBool("doorOpened", true);
+        
     }
 
-    private void OnDisable()
+    public override void OnCloseDoor()
     {
-        Interactable.fridgeInteracted -= handleDoorFridge;
-    }
+        base.OnCloseDoor();
+        Debug.Log("Fridge Closed");
+        FridgeDoor.SetBool("doorOpened", false);
 
-    private void handleDoorFridge() {
-        if (isOpen)
-        {
-            Debug.Log("Closed fridge door");
-            isOpen = false;
-        }
-        else {
-            Debug.Log("Opened fridge door");
-            isOpen = true;
-        }
     }
 }
