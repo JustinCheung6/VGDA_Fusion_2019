@@ -382,7 +382,7 @@ Transform:
   - {fileID: 1749479312}
   - {fileID: 575056454}
   m_Father: {fileID: 999958618}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &170448008
 MonoBehaviour:
@@ -397,6 +397,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactable: {fileID: 0}
+  name: Name
 --- !u!114 &170448009
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -532,11 +533,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 335227033}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 19.871, y: 3.092, z: -5.868}
-  m_LocalScale: {x: 0.676, y: 0.675, z: 0.6676}
+  m_LocalPosition: {x: -0.7121292, y: 0.112785734, z: 0.06895736}
+  m_LocalScale: {x: 0.4219725, y: 0.13044642, z: 0.23990227}
   m_Children: []
-  m_Father: {fileID: 999958618}
-  m_RootOrder: 7
+  m_Father: {fileID: 903174283}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &335227035
 MonoBehaviour:
@@ -569,6 +570,7 @@ MonoBehaviour:
   quantity: 1
   meterChange: 0
   player: {fileID: 1072490653}
+  inventory: {fileID: 755781678}
   dropOffZone: {fileID: 1311119850}
   bufferDistance: 6
   OnDropOff:
@@ -777,6 +779,7 @@ MonoBehaviour:
   quantity: 1
   meterChange: 0
   player: {fileID: 1072490653}
+  inventory: {fileID: 755781678}
   dropOffZone: {fileID: 1311119850}
   bufferDistance: 6
   OnDropOff:
@@ -891,7 +894,7 @@ Transform:
   - {fileID: 999030249}
   - {fileID: 407381606}
   m_Father: {fileID: 999958618}
-  m_RootOrder: 10
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &437830530
 MonoBehaviour:
@@ -906,6 +909,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactable: {fileID: 0}
+  name: Name
 --- !u!114 &437830531
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1030,6 +1034,7 @@ MonoBehaviour:
   quantity: 1
   meterChange: 0
   player: {fileID: 1072490653}
+  inventory: {fileID: 755781678}
   dropOffZone: {fileID: 1311119850}
   bufferDistance: 6
   OnDropOff:
@@ -1221,7 +1226,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &697957630
 Transform:
   m_ObjectHideFlags: 0
@@ -1322,6 +1327,37 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactable: {fileID: 0}
+  name: Name
+--- !u!1 &755781678
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 755781679}
+  m_Layer: 12
+  m_Name: Inventory
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &755781679
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 755781678}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1072490657}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &764885667
 GameObject:
   m_ObjectHideFlags: 0
@@ -1385,7 +1421,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!135 &775166755
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1456,7 +1492,7 @@ Transform:
   m_LocalScale: {x: 0.676, y: 0.675, z: 0.6676}
   m_Children: []
   m_Father: {fileID: 999958618}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &775166759
 MonoBehaviour:
@@ -1475,6 +1511,7 @@ MonoBehaviour:
   quantity: 1
   meterChange: 0
   player: {fileID: 1072490653}
+  inventory: {fileID: 755781678}
   dropOffZone: {fileID: 1311119850}
   bufferDistance: 6
   OnDropOff:
@@ -1529,6 +1566,7 @@ Transform:
   m_LocalScale: {x: 1.602, y: 5.1745386, z: 2.7828}
   m_Children:
   - {fileID: 1777189864}
+  - {fileID: 335227034}
   m_Father: {fileID: 999958618}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1651,7 +1689,7 @@ Transform:
   m_LocalScale: {x: 4.7872987, y: 6.35901, z: 1.9656001}
   m_Children: []
   m_Father: {fileID: 999958618}
-  m_RootOrder: 11
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &919836226
 MonoBehaviour:
@@ -1666,6 +1704,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactable: {fileID: 919836227}
+  name: Name
 --- !u!114 &919836227
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1863,7 +1902,6 @@ Transform:
   - {fileID: 697957630}
   - {fileID: 903174283}
   - {fileID: 1311119851}
-  - {fileID: 335227034}
   - {fileID: 775166758}
   - {fileID: 170448007}
   - {fileID: 437830529}
@@ -2055,6 +2093,7 @@ Transform:
   m_LocalScale: {x: 1, y: 2.024, z: 1}
   m_Children:
   - {fileID: 120315588}
+  - {fileID: 755781679}
   m_Father: {fileID: 999958618}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

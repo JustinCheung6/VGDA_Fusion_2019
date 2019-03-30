@@ -16,6 +16,7 @@ public class PickupObject : MonoBehaviour
     [SerializeField] private int quantity = 1;
     [SerializeField] private float meterChange = 0f;
     [SerializeField] private GameObject player;
+    [SerializeField] private GameObject inventory;
     [SerializeField] private GameObject dropOffZone;
     [SerializeField] private float bufferDistance = 6f;
 
@@ -43,8 +44,15 @@ public class PickupObject : MonoBehaviour
         }
         else if (!takenObject && !inFinalPos)
         {
+            if (inventory.transform.childCount == 0)
+            {
+                DoPickUp();
+            }
+            else {
+                Debug.Log("Already holding something");
+            }
             //player.GetComponent<THING HOLDER > ().isHoldingSomething;
-            DoPickUp();
+            
         }
     }
 
@@ -53,7 +61,7 @@ public class PickupObject : MonoBehaviour
         Debug.Log("Object Taken");
         takenObject = true;
 
-        this.transform.SetParent(player.transform);
+        this.transform.SetParent(inventory.transform);
         this.transform.localPosition = Vector3.zero;
 
         OnPickedUp();
