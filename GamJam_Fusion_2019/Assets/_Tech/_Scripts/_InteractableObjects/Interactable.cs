@@ -4,9 +4,15 @@ using UnityEngine;
 
 public class Interactable : MonoBehaviour
 {
+
+
     // Take Place Object Events
-    public delegate void onTakePlaceInteract();
-    public static event onTakePlaceInteract takePlaceInteracted;
+    public delegate void onTakePlaceInteractTuna();
+    public static event onTakePlaceInteractTuna takePlaceInteractedTuna;
+
+    // Take Place Object Events
+    public delegate void onTakePlaceInteractWasabi();
+    public static event onTakePlaceInteractWasabi takePlaceInteractedWasabi;
 
     // Fridge Events
     public delegate void onFridgeInteract();
@@ -27,8 +33,10 @@ public class Interactable : MonoBehaviour
     // Interaction avalible
     public enum Interaction {
         DoNothing = 0,
-        TakePlaceObject = 1,
-        OpenCloseDoor = 2
+        TakePlaceObjectTuna = 1,
+        TakePlaceObjectWasabi = 2,
+        OpenCloseDoorFridge = 3,
+        OpenCloseDoorCabinet = 4
     }
 
     // Assigns interactions to objects
@@ -64,17 +72,27 @@ public class Interactable : MonoBehaviour
                     Debug.Log("Case 0: Nothing Happened");
                     break;
                 case (Interaction) 1:
-                    Debug.Log("Case 1: Object Taken/Placed");
-                    if (takePlaceInteracted != null)
+                    Debug.Log("Case 1: Tuna Taken/Placed");
+                    if (takePlaceInteractedTuna != null)
                     {
-                        takePlaceInteracted();
+                        takePlaceInteractedTuna();
                     }
                     break;
                 case (Interaction) 2:
-                    Debug.Log("Case 2: Door Opened/Closed");
+                    Debug.Log("Case 2: Wasabi Taken/Placed");
+                    if (takePlaceInteractedWasabi != null)
+                    {
+                        takePlaceInteractedWasabi();
+                    }
+                    break;
+                case (Interaction) 3:
+                    Debug.Log("Case 2: Fridge Door Opened/Closed");
                     if (fridgeInteracted != null) {
                         fridgeInteracted();
                     }
+                    break;
+                case (Interaction) 4:
+                    Debug.Log("Case 2: Cabinet Door Opened/Closed");
                     if (cabinetInteracted != null) {
                         cabinetInteracted();
                     }
