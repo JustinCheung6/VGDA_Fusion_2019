@@ -13,6 +13,7 @@ public class PickupObject : MonoBehaviour
     private bool inFinalPos = false;
 
     public Ticker ticktock;
+    public Score playerScore;
 
     [SerializeField] private string name = "NAME";
     [SerializeField] private int quantity = 1;
@@ -80,13 +81,15 @@ public class PickupObject : MonoBehaviour
             inFinalPos = true;
             this.transform.SetParent(null);
 
+
+            // Random chance to get an increased or decreased meter
             int random = UnityEngine.Random.Range(0,1);
             if (random == 0)
                 ticktock.incrementTicker(meterChange);
             else
                 ticktock.decrementTicker(meterChange);
 
-
+            playerScore.playerScored(100);
 
             OnDroppedOff();
         }
