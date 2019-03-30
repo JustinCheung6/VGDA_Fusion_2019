@@ -5,8 +5,6 @@ using UnityEngine;
 public class OpenCloseDoors : MonoBehaviour
 {
     public Interactable interactable;
-
-    [SerializeField] private string name = "Name";
     private bool isOpen = false;
 
     private void OnEnable()
