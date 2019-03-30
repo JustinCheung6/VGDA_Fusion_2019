@@ -20,11 +20,7 @@ public class Interactable : MonoBehaviour
         if (Input.GetButtonDown("LeftClick")) {
             Debug.Log("Left mouse click");
         }
-        if (Input.GetMouseButtonDown(1))
-        {
-            Debug.Log("Right mouse click");
-        }
-        if (Input.GetMouseButtonDown(2))
+        if (Input.GetButtonDown("RightClick"))
         {
             Debug.Log("Right mouse click");
         }
