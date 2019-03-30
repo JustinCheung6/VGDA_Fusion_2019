@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028334, g: 0.22571328, b: 0.3069217, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -606,7 +606,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &282279414
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2287,6 +2287,7 @@ GameObject:
   - component: {fileID: 1211575907}
   - component: {fileID: 1211575909}
   - component: {fileID: 1211575908}
+  - component: {fileID: 1211575910}
   m_Layer: 0
   m_Name: Cabinet
   m_TagString: Untagged
@@ -2353,6 +2354,19 @@ MonoBehaviour:
       Culture=neutral, PublicKeyToken=null
   leftDoor: {fileID: 1071328984}
   rightDoor: {fileID: 1074081169}
+--- !u!65 &1211575910
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1211575906}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 5.4069166, y: 9.045542, z: 2.171198}
+  m_Center: {x: -2.0742106, y: 2.8886771, z: -2.304326}
 --- !u!224 &1213027124 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2746684827568811621, guid: fab0645cf58f25a4594994d9c88d5ac4,
@@ -2770,6 +2784,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1524354219}
   m_CullTransparentMesh: 0
+--- !u!1 &1575924370 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100000, guid: e0c3704db43f48644ab6230adf4f5fb9,
+    type: 3}
+  m_PrefabInstance: {fileID: 282308848}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &1575924372
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1575924370}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 7.185481, y: 4.471851, z: 3.0445597}
+  m_Center: {x: 0.009547172, y: 0.9972338, z: 0.051947404}
 --- !u!1 &1612255575
 GameObject:
   m_ObjectHideFlags: 0
@@ -2941,26 +2974,6 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 198917022394846920, guid: e1b08032bec16ba4eb1ae23cbd572664,
-        type: 3}
-      propertyPath: UVModule.flipU
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 198917022394846920, guid: e1b08032bec16ba4eb1ae23cbd572664,
-        type: 3}
-      propertyPath: UVModule.flipV
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 198917022394846920, guid: e1b08032bec16ba4eb1ae23cbd572664,
-        type: 3}
-      propertyPath: lengthInSec
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 198917022394846920, guid: e1b08032bec16ba4eb1ae23cbd572664,
-        type: 3}
-      propertyPath: playOnAwake
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4388947112716342, guid: e1b08032bec16ba4eb1ae23cbd572664, type: 3}
       propertyPath: m_LocalPosition.x
       value: -15.38
@@ -3041,6 +3054,26 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 198844874048127756, guid: e1b08032bec16ba4eb1ae23cbd572664,
+        type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198917022394846920, guid: e1b08032bec16ba4eb1ae23cbd572664,
+        type: 3}
+      propertyPath: UVModule.flipU
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198917022394846920, guid: e1b08032bec16ba4eb1ae23cbd572664,
+        type: 3}
+      propertyPath: UVModule.flipV
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198917022394846920, guid: e1b08032bec16ba4eb1ae23cbd572664,
+        type: 3}
+      propertyPath: lengthInSec
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 198917022394846920, guid: e1b08032bec16ba4eb1ae23cbd572664,
         type: 3}
       propertyPath: playOnAwake
       value: 0
@@ -3890,7 +3923,7 @@ PrefabInstance:
     - target: {fileID: 2746684827287578378, guid: fab0645cf58f25a4594994d9c88d5ac4,
         type: 3}
       propertyPath: maxTime
-      value: 5
+      value: 40
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fab0645cf58f25a4594994d9c88d5ac4, type: 3}

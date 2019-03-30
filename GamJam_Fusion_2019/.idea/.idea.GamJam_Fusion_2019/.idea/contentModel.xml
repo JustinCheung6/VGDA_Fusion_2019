@@ -13,8 +13,11 @@
               <e p="Cabinet.cs" t="Include" />
               <e p="Fridge.cs" t="Include" />
               <e p="Interactable.cs" t="Include" />
+              <e p="InteractableSubscriber.cs" t="Include" />
+              <e p="InventoryManager.cs" t="Include" />
               <e p="OpenCloseDoors.cs" t="Include" />
               <e p="PickupObject.cs" t="Include" />
+              <e p="SampleInteractable.cs" t="Include" />
               <e p="Tuna.cs" t="Include" />
               <e p="Wasabi.cs" t="Include" />
             </e>
