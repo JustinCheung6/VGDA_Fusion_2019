@@ -28,12 +28,12 @@ public class PickupObject : MonoBehaviour
         {
             interactable = GetComponent<Interactable>();
         }
-        interactable.OnInteract += HandleInteract;
+        interactable.OnInteractPickUp += HandleInteract;
     }
 
     private void OnDisable()
     {
-        interactable.OnInteract -= HandleInteract;
+        interactable.OnInteractPickUp -= HandleInteract;
     }
 
     private void HandleInteract()

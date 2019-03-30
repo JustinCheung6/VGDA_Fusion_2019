@@ -15,12 +15,12 @@ public class OpenCloseDoors : MonoBehaviour
         {
             interactable = GetComponent<Interactable>();
         }
-        interactable.OnInteract += HandleDoor;
+        interactable.OnInteractOpenDoor += HandleDoor;
     }
 
     private void OnDisable()
     {
-        interactable.OnInteract -= HandleDoor;
+        interactable.OnInteractOpenDoor -= HandleDoor;
     }
 
     private void HandleDoor()

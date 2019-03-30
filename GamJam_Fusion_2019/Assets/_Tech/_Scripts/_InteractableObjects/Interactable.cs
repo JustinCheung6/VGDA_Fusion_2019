@@ -6,7 +6,9 @@ using System;
 public class Interactable : MonoBehaviour
 {
     // public delegate void Action();
-    public Action OnInteract;
+    public Action OnInteractPickUp;
+
+    public Action OnInteractOpenDoor;
 
     [SerializeField] private GameObject player;
 
@@ -24,14 +26,18 @@ public class Interactable : MonoBehaviour
         {
             //Debug.Log("Left mouse click");
             if ((distanceBetweenZ < bufferDistance)&&(distanceBetweenX < bufferDistance)) {
-
-                if(OnInteract != null)
-                    OnInteract();
+                if(OnInteractPickUp != null)
+                    OnInteractPickUp();
             }
         }
         if (Input.GetButtonDown("RightClick"))
         {
             //Debug.Log("Right mouse click");
+            if ((distanceBetweenZ < bufferDistance) && (distanceBetweenX < bufferDistance))
+            {
+                if (OnInteractOpenDoor != null)
+                    OnInteractOpenDoor();
+            }
         }
     }
 }
