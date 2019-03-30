@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ExplosionHandler : MonoBehaviour
 {
@@ -24,6 +25,14 @@ public class ExplosionHandler : MonoBehaviour
         explosion.Play();
         explosionSound.Play();
         Ticker.OnDeathEvent -= TriggerExplosion;
+        StartCoroutine(wait());
+        SceneManager.LoadScene(1);
     }
+
+    IEnumerator wait()
+    {
+        yield return new WaitForSeconds(3);
+    }
+    
     
 }

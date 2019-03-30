@@ -108,6 +108,7 @@
             <e p="Readme.cs" t="Include" />
           </e>
         </e>
+        <e p="UIHandler.cs" t="Include" />
       </e>
       <e p="GamJam_Fusion_2019.sln" t="IncludeFlat" />
       <e p="Library" t="ExcludeRecursive" />
