@@ -4,13 +4,11 @@ using UnityEngine;
 
 public class Interactable : MonoBehaviour
 {
-
-
-    // Take Place Object Events
+    // Tuna Events
     public delegate void onTakePlaceInteractTuna();
     public static event onTakePlaceInteractTuna takePlaceInteractedTuna;
 
-    // Take Place Object Events
+    // Wasabi Events
     public delegate void onTakePlaceInteractWasabi();
     public static event onTakePlaceInteractWasabi takePlaceInteractedWasabi;
 
@@ -25,7 +23,7 @@ public class Interactable : MonoBehaviour
     [SerializeField] private GameObject player;
     private Transform interactPos;
 
-    // Distance from the center of the object that allows the player to 
+    // Distance from the center of the object that allows the player to interact with
     [SerializeField] private float bufferDistance = 6f;
     private float distanceBetweenX;
     private float distanceBetweenZ;
@@ -65,41 +63,43 @@ public class Interactable : MonoBehaviour
         distanceBetweenX = Mathf.Abs(player.transform.position.x - interactPos.position.x);
         distanceBetweenZ = Mathf.Abs(player.transform.position.z - interactPos.position.z);
 
-        if (Input.GetButtonDown("LeftClick") && distanceBetweenX < bufferDistance && distanceBetweenZ < bufferDistance) {
+        if (Input.GetButtonDown("LeftClick") ) {
             Debug.Log("Left mouse click");
-            switch (currentInteraction) {
-                case (Interaction) 0:
-                    Debug.Log("Case 0: Nothing Happened");
-                    break;
-                case (Interaction) 1:
-                    Debug.Log("Case 1: Tuna Taken/Placed");
-                    if (takePlaceInteractedTuna != null)
-                    {
-                        takePlaceInteractedTuna();
-                    }
-                    break;
-                case (Interaction) 2:
-                    Debug.Log("Case 2: Wasabi Taken/Placed");
-                    if (takePlaceInteractedWasabi != null)
-                    {
-                        takePlaceInteractedWasabi();
-                    }
-                    break;
-                case (Interaction) 3:
-                    Debug.Log("Case 2: Fridge Door Opened/Closed");
-                    if (fridgeInteracted != null) {
-                        fridgeInteracted();
-                    }
-                    break;
-                case (Interaction) 4:
-                    Debug.Log("Case 2: Cabinet Door Opened/Closed");
-                    if (cabinetInteracted != null) {
-                        cabinetInteracted();
-                    }
-                    break;
-                default:
-                    Debug.Log("Default Case: Nothing Happened");
-                    break;
+            if ((distanceBetweenZ < bufferDistance)&&(distanceBetweenX < bufferDistance)) {
+                switch (currentInteraction)
+                {
+                    case (Interaction) 0:
+                        Debug.Log("Case 0: Nothing Happened");
+                        break;
+                    case (Interaction) 1:
+                        if (takePlaceInteractedTuna != null)
+                        {
+                            takePlaceInteractedTuna();
+                        }
+                        break;
+                    case (Interaction) 2:
+                        if (takePlaceInteractedWasabi != null)
+                        {
+                            Debug.Log("WASABIIIIIIIII");
+                            //takePlaceInteractedWasabi();
+                        }
+                        break;
+                    case (Interaction) 3:
+                        if (fridgeInteracted != null)
+                        {
+                            fridgeInteracted();
+                        }
+                        break;
+                    case (Interaction) 4:
+                        if (cabinetInteracted != null)
+                        {
+                            cabinetInteracted();
+                        }
+                        break;
+                    default:
+                        Debug.Log("Default Case: Nothing Happened");
+                        break;
+                }
             }
         }
         if (Input.GetButtonDown("RightClick"))

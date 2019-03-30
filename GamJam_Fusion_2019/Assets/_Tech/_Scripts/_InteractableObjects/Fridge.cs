@@ -19,11 +19,11 @@ public class Fridge : MonoBehaviour
     private void handleDoorFridge() {
         if (isOpen)
         {
-            Debug.Log("Close fridge door");
+            Debug.Log("Closed fridge door");
             isOpen = false;
         }
         else {
-            Debug.Log("Open fridge door");
+            Debug.Log("Opened fridge door");
             isOpen = true;
         }
     }

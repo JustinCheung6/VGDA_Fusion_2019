@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class Tuna : MonoBehaviour
 {
-    private bool taken = false;
-    private bool inFinalPos = false;
-    private Transform trans;
+    private bool takenTuna = false;
+    private bool inFinalPosTuna = false;
+    private Transform transTuna;
 
     [SerializeField] private string name = "Tuna";
     [SerializeField] private int quantity = 1;
@@ -20,46 +20,46 @@ public class Tuna : MonoBehaviour
 
     private void OnEnable()
     {
-        StartHandler.StartOccurred += GetTransform;
-        Interactable.takePlaceInteractedTuna += HandleObject;
-        UpdateHandler.UpdateOccurred += MoveObject;
+        StartHandler.StartOccurred += GetTuna;
+        Interactable.takePlaceInteractedTuna += HandleTuna;
+        UpdateHandler.UpdateOccurred += MoveTuna;
     }
 
     private void OnDisable()
     {
-        StartHandler.StartOccurred -= GetTransform;
-        Interactable.takePlaceInteractedTuna -= HandleObject;
-        UpdateHandler.UpdateOccurred -= MoveObject;
+        StartHandler.StartOccurred -= GetTuna;
+        Interactable.takePlaceInteractedTuna -= HandleTuna;
+        UpdateHandler.UpdateOccurred -= MoveTuna;
     }
 
-    private void GetTransform()
+    private void GetTuna()
     {
-        trans = GetComponent<Transform>();
+        transTuna = GetComponent<Transform>();
     }
 
-    private void HandleObject() {
-        if (taken)
+    private void HandleTuna() {
+        if (takenTuna)
         {
             if (distanceBetweenX < bufferDistance && distanceBetweenZ < bufferDistance) {
-                Debug.Log("Object Placed");
+                Debug.Log("Tuna Placed");
                 float offset = (float)dropOffZone.transform.position.y + 0.5f;
-                trans.position = new Vector3(dropOffZone.transform.position.x, offset, dropOffZone.transform.position.z);
-                taken = false;
-                inFinalPos = true;
+                transTuna.position = new Vector3(dropOffZone.transform.position.x, offset, dropOffZone.transform.position.z);
+                takenTuna = false;
+                inFinalPosTuna = true;
             }
         }
-        else if(!taken && !inFinalPos){
-            Debug.Log("Object Taken");
-            taken = true;
+        else if(!takenTuna && !inFinalPosTuna){
+            Debug.Log("Tuna Taken");
+            takenTuna = true;
         }
     }
 
-    private void MoveObject() {
+    private void MoveTuna() {
         distanceBetweenX = Mathf.Abs(player.transform.position.x - dropOffZone.transform.position.x);
         distanceBetweenZ = Mathf.Abs(player.transform.position.z - dropOffZone.transform.position.z);
-        if (taken)
+        if (takenTuna)
         {
-            trans.position = player.transform.position;
+            transTuna.position = player.transform.position;
         }
     }
 }

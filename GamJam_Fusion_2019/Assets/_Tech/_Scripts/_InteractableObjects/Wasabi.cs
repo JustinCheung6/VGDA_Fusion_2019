@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class Wasabi : MonoBehaviour
 {
-    private bool taken = false;
-    private bool inFinalPos = false;
-    private Transform trans;
+    private bool takenWasabi = false;
+    private bool inFinalPosWasabi = false;
+    private Transform transWasabi;
 
     [SerializeField] private string name = "Wasabi";
     [SerializeField] private int quantity = 1;
@@ -20,50 +20,50 @@ public class Wasabi : MonoBehaviour
 
     private void OnEnable()
     {
-        StartHandler.StartOccurred += GetTransform;
-        Interactable.takePlaceInteractedWasabi += HandleObject;
-        UpdateHandler.UpdateOccurred += MoveObject;
+        StartHandler.StartOccurred += GetWasabi;
+        Interactable.takePlaceInteractedWasabi += HandleWasabi;
+        UpdateHandler.UpdateOccurred += MoveWasabi;
     }
 
     private void OnDisable()
     {
-        StartHandler.StartOccurred -= GetTransform;
-        Interactable.takePlaceInteractedWasabi -= HandleObject;
-        UpdateHandler.UpdateOccurred -= MoveObject;
+        StartHandler.StartOccurred -= GetWasabi;
+        Interactable.takePlaceInteractedWasabi -= HandleWasabi;
+        UpdateHandler.UpdateOccurred -= MoveWasabi;
     }
 
-    private void GetTransform()
+    private void GetWasabi()
     {
-        trans = GetComponent<Transform>();
+        transWasabi = GetComponent<Transform>();
     }
 
-    private void HandleObject()
+    private void HandleWasabi()
     {
-        if (taken)
+        if (takenWasabi)
         {
-            if (distanceBetweenX < bufferDistance && distanceBetweenZ < bufferDistance)
+            if ((distanceBetweenX < bufferDistance) && (distanceBetweenZ < bufferDistance))
             {
-                Debug.Log("Object Placed");
+                Debug.Log("Wasabi Placed");
                 float offset = (float)dropOffZone.transform.position.y + 0.5f;
-                trans.position = new Vector3(dropOffZone.transform.position.x, offset, dropOffZone.transform.position.z);
-                taken = false;
-                inFinalPos = true;
+                transWasabi.position = new Vector3(dropOffZone.transform.position.x, offset, dropOffZone.transform.position.z);
+                takenWasabi = false;
+                inFinalPosWasabi = true;
             }
         }
-        else if (!taken && !inFinalPos)
+        else if (!takenWasabi && !inFinalPosWasabi)
         {
-            Debug.Log("Object Taken");
-            taken = true;
+            Debug.Log("Wasabi Taken");
+            takenWasabi = true;
         }
     }
 
-    private void MoveObject()
+    private void MoveWasabi()
     {
         distanceBetweenX = Mathf.Abs(player.transform.position.x - dropOffZone.transform.position.x);
         distanceBetweenZ = Mathf.Abs(player.transform.position.z - dropOffZone.transform.position.z);
-        if (taken)
+        if (takenWasabi)
         {
-            trans.position = player.transform.position;
+            transWasabi.position = player.transform.position;
         }
     }
 }

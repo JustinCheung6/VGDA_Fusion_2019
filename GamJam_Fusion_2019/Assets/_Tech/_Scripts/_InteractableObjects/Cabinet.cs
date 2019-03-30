@@ -19,11 +19,11 @@ public class Cabinet : MonoBehaviour
     private void handleDoorCab() {
         if (isOpen)
         {
-            Debug.Log("Close cabinet door");
+            Debug.Log("Closed cabinet door");
             isOpen = false;
         }
         else {
-            Debug.Log("Open cabinet door");
+            Debug.Log("Opened cabinet door");
             isOpen = true;
         }
     }
