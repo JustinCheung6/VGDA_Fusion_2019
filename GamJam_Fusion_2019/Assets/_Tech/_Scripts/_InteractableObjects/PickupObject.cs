@@ -80,7 +80,13 @@ public class PickupObject : MonoBehaviour
             inFinalPos = true;
             this.transform.SetParent(null);
 
-            ticktock.incrementTicker(meterChange);
+            int random = UnityEngine.Random.Range(0,1);
+            if (random == 0)
+                ticktock.incrementTicker(meterChange);
+            else
+                ticktock.decrementTicker(meterChange);
+
+
 
             OnDroppedOff();
         }

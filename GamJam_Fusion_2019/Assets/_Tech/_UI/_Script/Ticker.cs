@@ -68,7 +68,7 @@ public class Ticker : MonoBehaviour
         updateTicker();
     }
 
-    private void decrementTicker(float value)
+    public void decrementTicker(float value)
     {
         timeLeft -= value;
         if (timeLeft < 0)
