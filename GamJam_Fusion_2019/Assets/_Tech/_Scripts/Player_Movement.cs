@@ -15,19 +15,20 @@ public class Player_Movement : MonoBehaviour
 
     private void OnEnable()
     {
-        StartHandler.StartOccurred += GetCharacterControllerComponent;
+        StartHandler.StartOccurred += SetUpFPS;
         UpdateHandler.UpdateOccurred += ControlPlayerMovement;
     }
 
     private void OnDisable()
     {
-        StartHandler.StartOccurred -= GetCharacterControllerComponent;
+        StartHandler.StartOccurred -= SetUpFPS;
         UpdateHandler.UpdateOccurred -= ControlPlayerMovement;
     }
 
-    void GetCharacterControllerComponent()
+    void SetUpFPS()
     {
         _charCont = GetComponent<CharacterController>();
+        Cursor.visible = false;
 
     }
 
