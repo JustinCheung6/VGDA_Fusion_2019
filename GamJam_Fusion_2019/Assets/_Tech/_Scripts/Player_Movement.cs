@@ -4,32 +4,34 @@ using UnityEngine;
 
 public class Player_Movement : MonoBehaviour
 {
-
+    // Walking speed
     [SerializeField] private float speed = 6.0f;
+
+    // Gravity -- effects vertical movement
     [SerializeField] private float gravity = -9.8f;
 
-
+    // Character controller 
     private CharacterController _charCont;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        _charCont = GetComponent<CharacterController>();
-        
-    }
 
     private void OnEnable()
     {
-        UpdateHandler.UpdateOccurred += Movement;
+        StartHandler.StartOccurred += GetCharacterControllerComponent;
+        UpdateHandler.UpdateOccurred += ControlPlayerMovement;
     }
 
     private void OnDisable()
     {
-        UpdateHandler.UpdateOccurred -= Movement;
+        StartHandler.StartOccurred -= GetCharacterControllerComponent;
+        UpdateHandler.UpdateOccurred -= ControlPlayerMovement;
     }
 
-    // Update is called once per frame
-    void Movement()
+    void GetCharacterControllerComponent()
+    {
+        _charCont = GetComponent<CharacterController>();
+
+    }
+
+    void ControlPlayerMovement()
     {
         float deltaX = Input.GetAxis("Horizontal") * speed;
         float deltaZ = Input.GetAxis("Vertical") * speed;
