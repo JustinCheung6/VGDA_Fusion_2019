@@ -11,10 +11,12 @@ public class PauseMenu : MonoBehaviour
     void onEnabled()
     {
         UpdateHandler.UpdateOccurred += checkPauseMenu;
+        Debug.Log("We are enabled!");
     }
     void onDisabled()
     {
         UpdateHandler.UpdateOccurred -= checkPauseMenu;
+        Debug.Log("We are disabled!");
     }
 
     // Update is called once per frame
@@ -36,10 +38,12 @@ public class PauseMenu : MonoBehaviour
     {
         Time.timeScale = 1f;
         pauseMenu.SetActive(false);
+        paused = false;
     }
     private void pause()
     {
         Time.timeScale = 0f;
         pauseMenu.SetActive(true);
+        paused = true;
     }
 }
