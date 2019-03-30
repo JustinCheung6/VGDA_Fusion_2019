@@ -4,19 +4,19 @@ using UnityEngine;
 
 public class Cabinet : MonoBehaviour
 {
-    bool isOpen = false;
+    private bool isOpen = false;
 
     private void OnEnable()
     {
-        Interactable.cabinetInteracted += handleDoor;
+        Interactable.cabinetInteracted += handleDoorCab;
     }
 
     private void OnDisable()
     {
-        Interactable.cabinetInteracted -= handleDoor;
+        Interactable.cabinetInteracted -= handleDoorCab;
     }
 
-    private void handleDoor() {
+    private void handleDoorCab() {
         if (isOpen)
         {
             Debug.Log("Close cabinet door");

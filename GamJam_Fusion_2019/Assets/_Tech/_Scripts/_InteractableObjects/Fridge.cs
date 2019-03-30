@@ -8,15 +8,15 @@ public class Fridge : MonoBehaviour
 
     private void OnEnable()
     {
-        Interactable.fridgeInteracted += handleDoor;
+        Interactable.fridgeInteracted += handleDoorFridge;
     }
 
     private void OnDisable()
     {
-        Interactable.fridgeInteracted -= handleDoor;
+        Interactable.fridgeInteracted -= handleDoorFridge;
     }
 
-    private void handleDoor() {
+    private void handleDoorFridge() {
         if (isOpen)
         {
             Debug.Log("Close fridge door");
