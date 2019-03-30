@@ -6,14 +6,18 @@ public class TakePlaceObject : MonoBehaviour
 {
     private bool taken = false;
 
+    [SerializeField] private string name = "Object Name";
+    [SerializeField] private float timeTick = 0f;
+    //[SerializeField] priate GameObject player;
+
     // Objects avalible
     public enum Objects {
         Nothing = 0,
         Tuna = 1,
         Wasabi = 2
     }
+    [SerializeField] private Objects currentObject = 0;
 
-    //[SerializeField] private 
     private void OnEnable()
     {
         Interactable.takePlaceInteracted += handleObject;
