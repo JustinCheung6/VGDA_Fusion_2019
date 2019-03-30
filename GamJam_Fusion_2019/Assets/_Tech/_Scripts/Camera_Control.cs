@@ -39,12 +39,12 @@ public class Camera_Control : MonoBehaviour
 
     private void OnEnable()
     {
-        UpdateHandler.UpdateOccured += CameraInputHandler;
+        UpdateHandler.UpdateOccurred += CameraInputHandler;
     }
 
     private void OnDisable()
     {
-        UpdateHandler.UpdateOccured -= CameraInputHandler;
+        UpdateHandler.UpdateOccurred -= CameraInputHandler;
     }
 
     

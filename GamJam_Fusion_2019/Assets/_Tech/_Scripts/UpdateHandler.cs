@@ -6,11 +6,11 @@ public class UpdateHandler : MonoBehaviour
 {
     public delegate void onUpdate();
 
-    public static event onUpdate UpdateOccured;
+    public static event onUpdate UpdateOccurred;
 
     private void Update()
     {
-        if (UpdateOccured != null)
-            UpdateOccured();
+        if (UpdateOccurred != null)
+            UpdateOccurred();
     }
 }
