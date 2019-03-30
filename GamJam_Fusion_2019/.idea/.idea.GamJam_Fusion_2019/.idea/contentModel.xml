@@ -11,10 +11,12 @@
             <e p="Camera_Control.cs" t="Include" />
             <e p="Interactable.cs" t="Include" />
             <e p="Player_Movement.cs" t="Include" />
+            <e p="StartHandler.cs" t="Include" />
             <e p="UpdateHandler.cs" t="Include" />
           </e>
           <e p="_UI" t="Include">
             <e p="_Script" t="Include">
+              <e p="PauseMenu.cs" t="Include" />
               <e p="Ticker.cs" t="Include" />
             </e>
           </e>
