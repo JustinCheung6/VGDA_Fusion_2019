@@ -5842,7 +5842,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1072490653}
-  interact: {fileID: 1311119850}
   bufferDistance: 3
 --- !u!1 &1482578550
 GameObject:

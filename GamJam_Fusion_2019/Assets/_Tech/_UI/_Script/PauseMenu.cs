@@ -8,12 +8,12 @@ public class PauseMenu : MonoBehaviour
     private bool paused = false;
     public GameObject pauseMenu;
     // Start is called before the first frame update
-    void onEnabled()
+    void OnEnable()
     {
         UpdateHandler.UpdateOccurred += checkPauseMenu;
         Debug.Log("We are enabled!");
     }
-    void onDisabled()
+    void OnDisable()
     {
         UpdateHandler.UpdateOccurred -= checkPauseMenu;
         Debug.Log("We are disabled!");
@@ -22,17 +22,21 @@ public class PauseMenu : MonoBehaviour
     // Update is called once per frame
     void checkPauseMenu()
     {
-        if (Input.GetKey(pauseKey))
+        if (Time.timeScale == 1f)
         {
-            if(paused)
-            {
-                resume();
-            }
-            else
+            if(Input.GetKeyDown(pauseKey))
             {
                 pause();
             }
         }
+        else
+        {
+            if (Input.GetKeyDown(pauseKey))
+            {
+                resume();
+            }
+        }
+        
     }
     private void resume()
     {
