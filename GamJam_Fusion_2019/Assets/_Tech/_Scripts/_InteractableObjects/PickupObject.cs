@@ -12,6 +12,8 @@ public class PickupObject : MonoBehaviour
     private bool takenObject = false;
     private bool inFinalPos = false;
 
+    public Ticker ticktock;
+
     [SerializeField] private string name = "NAME";
     [SerializeField] private int quantity = 1;
     [SerializeField] private float meterChange = 0f;
@@ -56,7 +58,7 @@ public class PickupObject : MonoBehaviour
 
     private void DoPickUp()
     {
-        Debug.Log("Object Taken");
+        //Debug.Log("Object Taken");
         takenObject = true;
 
         this.transform.SetParent(inventory.transform);
@@ -71,12 +73,14 @@ public class PickupObject : MonoBehaviour
         float dropOffDistanceBetweenZ = Mathf.Abs(player.transform.position.z - dropOffZone.transform.position.z);
         if ((dropOffDistanceBetweenX < bufferDistance) && (dropOffDistanceBetweenZ < bufferDistance))
         {
-            Debug.Log("Object Placed");
+            //Debug.Log("Object Placed");
             float offset = (float)dropOffZone.transform.position.y + 0.5f;
             transform.position = new Vector3(dropOffZone.transform.position.x, offset, dropOffZone.transform.position.z);
             takenObject = false;
             inFinalPos = true;
             this.transform.SetParent(null);
+
+            ticktock.incrementTicker(meterChange);
 
             OnDroppedOff();
         }

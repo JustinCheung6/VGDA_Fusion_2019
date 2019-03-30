@@ -58,7 +58,7 @@ public class Ticker : MonoBehaviour
         ratioText.text = (ratio*100).ToString("0") + '%';
     }
 
-    private void incrementTicker(float value)
+    public void incrementTicker(float value)
     {
         timeLeft += value;
         if (timeLeft > maxTime)

@@ -13,6 +13,6 @@ public class Tuna : PickupObject
     public override void OnDroppedOff()
     {
         base.OnDroppedOff();
-        Debug.Log("Dropped up Tuna!");
+        Debug.Log("Dropped off Tuna!");
     }
 }
