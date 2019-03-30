@@ -5,27 +5,62 @@ using UnityEngine;
 public class Interactable : MonoBehaviour
 {
     [SerializeField] private GameObject player;
-    private GameObject interact;
+    private Transform interactPos;
 
-    [SerializeField] private float bufferDistance = 3f;
+    // Distance from the center of the object that allows the player to 
+    [SerializeField] private float bufferDistance = 6f;
+    private float distanceBetweenX;
+    private float distanceBetweenZ;
 
+    // Interaction avalible
     public enum Interaction {
-        TakeObject = 0,
-        PlaceObject = 1
+        DoNothing = 0,
+        TakePlaceObject = 1,
+        OpenCloseDoor = 2
     }
 
+    // Assigns interactions to objects
+    [SerializeField] private Interaction currentInteraction = 0;
 
-    // Start is called before the first frame update
-    void Start()
+
+    private void OnEnable()
     {
-        
+        StartHandler.StartOccurred += getInteractable;
+        UpdateHandler.UpdateOccurred += GetInteraction;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnDisable()
     {
-        if (Input.GetButtonDown("LeftClick")) {
+        StartHandler.StartOccurred -= getInteractable;
+        UpdateHandler.UpdateOccurred -= GetInteraction;
+    }
+
+    void getInteractable()
+    {
+        interactPos = GetComponent<Transform>();
+    }
+
+    void GetInteraction()
+    {
+        distanceBetweenX = Mathf.Abs(player.transform.position.x - interactPos.position.x);
+        distanceBetweenZ = Mathf.Abs(player.transform.position.z - interactPos.position.z);
+
+        if (Input.GetButtonDown("LeftClick") && distanceBetweenX < bufferDistance && distanceBetweenZ < bufferDistance) {
             Debug.Log("Left mouse click");
+            switch (currentInteraction) {
+                case (Interaction) 0:
+                    Debug.Log("Case 0: Nothing Happened");
+                    break;
+                case (Interaction) 1:
+                    Debug.Log("Case 1: Object Taken/Placed");
+                    break;
+                case (Interaction) 2:
+                    Debug.Log("Case 2: Door Opened/Closed");
+                    break;
+                default:
+                    Debug.Log("Default Case: Nothing Happened");
+                    break;
+            }
         }
         if (Input.GetButtonDown("RightClick"))
         {
