@@ -27,26 +27,16 @@ public class OpenCloseDoors : MonoBehaviour
         {
             //Debug.Log("Closed door");
             isOpen = false;
-            for (int i = 0; i < transform.childCount; i++) {
-                var child = transform.GetChild(i).gameObject;
-                if (child.GetComponent<PickupObject>()) {
-                    child.SetActive(false);
-                }
-            }
+            var child = transform.GetChild(transform.childCount - 1);
+            child.gameObject.SetActive(false);
             OnCloseDoor();
         }
         else
         {
             //Debug.Log("Opened door");
             isOpen = true;
-            for (int i = 0; i < transform.childCount; i++)
-            {
-                var child = transform.GetChild(i);
-                if (child != null)
-                {
-                    child.gameObject.SetActive(true);
-                }
-            }
+            var child = transform.GetChild(transform.childCount - 1);
+            child.gameObject.SetActive(true);
             OnCloseDoor();
 
             OnOpenDoor();
