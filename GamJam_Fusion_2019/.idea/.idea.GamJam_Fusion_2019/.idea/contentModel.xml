@@ -33,6 +33,7 @@
             <e p="PackageImportList.txt" t="Include" />
           </e>
         </e>
+        <e p="ExplosionHandler.cs" t="Include" />
         <e p="Particle Pack" t="Include">
           <e p="EffectExamples" t="Include">
             <e p="Magic Effects" t="Include">
