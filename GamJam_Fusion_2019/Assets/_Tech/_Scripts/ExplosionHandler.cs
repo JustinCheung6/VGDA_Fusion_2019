@@ -26,12 +26,12 @@ public class ExplosionHandler : MonoBehaviour
         explosionSound.Play();
         Ticker.OnDeathEvent -= TriggerExplosion;
         StartCoroutine(wait());
-        SceneManager.LoadScene(1);
     }
 
     IEnumerator wait()
     {
         yield return new WaitForSeconds(3);
+        SceneManager.LoadScene(1);
     }
     
     
