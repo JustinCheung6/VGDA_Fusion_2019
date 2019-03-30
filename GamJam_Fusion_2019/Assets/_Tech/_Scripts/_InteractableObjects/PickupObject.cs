@@ -4,11 +4,8 @@ using UnityEngine;
 using System;
 using UnityEngine.Events;
 
-public class PickupObject : MonoBehaviour
+public class PickupObject : InteractableSubscriber
 {
-
-    public Interactable interactable;
-
     private bool takenObject = false;
     private bool inFinalPos = false;
 
@@ -16,7 +13,6 @@ public class PickupObject : MonoBehaviour
     public Score playerScore;
 
     [SerializeField] private string name = "NAME";
-    [SerializeField] private int quantity = 1;
     [SerializeField] private float meterChange = 0f;
     [SerializeField] private GameObject player;
     [SerializeField] private GameObject inventory;
@@ -25,27 +21,9 @@ public class PickupObject : MonoBehaviour
 
     public UnityEvent OnDropOff;
 
-    private void OnEnable()
+    protected override void HandleInteract()
     {
-        if(interactable == null)
-        {
-            interactable = GetComponent<Interactable>();
-        }
-        interactable.OnInteractPickUp += HandleInteract;
-    }
-
-    private void OnDisable()
-    {
-        interactable.OnInteractPickUp -= HandleInteract;
-    }
-
-    private void HandleInteract()
-    {
-        if (takenObject)
-        {
-            DoDropOff();
-        }
-        else if (!takenObject && !inFinalPos)
+        if (!takenObject && !inFinalPos)
         {
             if (inventory.transform.childCount == 0)
             {
@@ -56,15 +34,22 @@ public class PickupObject : MonoBehaviour
             }
         }
     }
+    public void TryDropOff()
+    {
+        if (takenObject)
+        {
+            DoDropOff();
+        }
+    }
 
     private void DoPickUp()
     {
-        //Debug.Log("Object Taken");
+        Debug.Log("Object Taken");
         takenObject = true;
 
-        this.transform.SetParent(inventory.transform);
-        this.transform.localPosition = Vector3.zero;
+        inventory.GetComponent<InventoryManager>().AddPickup(this);
 
+        Debug.Log("Object Taken FOR SURE");
         OnPickedUp();
     }
 
@@ -72,9 +57,11 @@ public class PickupObject : MonoBehaviour
     {
         float dropOffDistanceBetweenX = Mathf.Abs(player.transform.position.x - dropOffZone.transform.position.x);
         float dropOffDistanceBetweenZ = Mathf.Abs(player.transform.position.z - dropOffZone.transform.position.z);
+        Debug.Log("X Distance: " + dropOffDistanceBetweenX);
+        Debug.Log("Z Distance: " + dropOffDistanceBetweenZ);
         if ((dropOffDistanceBetweenX < bufferDistance) && (dropOffDistanceBetweenZ < bufferDistance))
         {
-            //Debug.Log("Object Placed");
+            Debug.Log("Object Placed");
             float offset = (float)dropOffZone.transform.position.y + 0.5f;
             transform.position = new Vector3(dropOffZone.transform.position.x, offset, dropOffZone.transform.position.z);
             takenObject = false;
@@ -91,13 +78,13 @@ public class PickupObject : MonoBehaviour
 
             playerScore.playerScored(100);
 
+            inventory.GetComponent<InventoryManager>().DropPickup();
             OnDroppedOff();
         }
     }
 
     public virtual void OnPickedUp()
     {
-
     }
     public virtual void OnDroppedOff()
     {
