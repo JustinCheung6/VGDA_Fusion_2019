@@ -20,12 +20,12 @@ public class Ticker : MonoBehaviour
 
     private void OnEnable()
     {
-        UpdateHandler.UpdateOccured += UpdateRemainingTime;
+        UpdateHandler.UpdateOccurred += UpdateRemainingTime;
     }
 
     private void OnDisable()
     {
-        UpdateHandler.UpdateOccured -= UpdateRemainingTime;
+        UpdateHandler.UpdateOccurred -= UpdateRemainingTime;
     }
 
     private void UpdateRemainingTime()

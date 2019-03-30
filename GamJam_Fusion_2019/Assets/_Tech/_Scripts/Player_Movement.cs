@@ -20,7 +20,12 @@ public class Player_Movement : MonoBehaviour
 
     private void OnEnable()
     {
-        UpdateHandler.UpdateOccurred
+        UpdateHandler.UpdateOccurred += Movement;
+    }
+
+    private void OnDisable()
+    {
+        UpdateHandler.UpdateOccurred -= Movement;
     }
 
     // Update is called once per frame
