@@ -5,8 +5,8 @@ using UnityEngine;
 public class Player_Movement : MonoBehaviour
 {
 
-    public float speed = 6.0f;
-    public float gravity = -9.8f;
+    [SerializeField] private float speed = 6.0f;
+    [SerializeField] private float gravity = -9.8f;
 
 
     private CharacterController _charCont;
@@ -18,8 +18,13 @@ public class Player_Movement : MonoBehaviour
         
     }
 
+    private void OnEnable()
+    {
+        UpdateHandler.UpdateOccurred
+    }
+
     // Update is called once per frame
-    void Update()
+    void Movement()
     {
         float deltaX = Input.GetAxis("Horizontal") * speed;
         float deltaZ = Input.GetAxis("Vertical") * speed;
