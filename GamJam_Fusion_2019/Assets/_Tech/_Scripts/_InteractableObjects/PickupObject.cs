@@ -70,8 +70,8 @@ public class PickupObject : InteractableSubscriber
 
 
             // Random chance to get an increased or decreased meter
-            int random = UnityEngine.Random.Range(0,1);
-            if (random == 0)
+            int random = UnityEngine.Random.Range(0,10);
+            if (random <5)
                 ticktock.incrementTicker(meterChange);
             else
                 ticktock.decrementTicker(meterChange);
