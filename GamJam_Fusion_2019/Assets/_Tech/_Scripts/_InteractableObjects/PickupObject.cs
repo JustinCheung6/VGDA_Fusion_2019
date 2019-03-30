@@ -4,11 +4,8 @@ using UnityEngine;
 using System;
 using UnityEngine.Events;
 
-public class PickupObject : MonoBehaviour
+public class PickupObject : InteractableSubscriber
 {
-
-    public Interactable interactable;
-
     private bool takenObject = false;
     private bool inFinalPos = false;
 
@@ -24,27 +21,9 @@ public class PickupObject : MonoBehaviour
 
     public UnityEvent OnDropOff;
 
-    private void OnEnable()
+    protected override void HandleInteract()
     {
-        if(interactable == null)
-        {
-            interactable = GetComponent<Interactable>();
-        }
-        interactable.OnInteractPickUp += HandleInteract;
-    }
-
-    private void OnDisable()
-    {
-        interactable.OnInteractPickUp -= HandleInteract;
-    }
-
-    private void HandleInteract()
-    {
-        if (takenObject)
-        {
-            DoDropOff();
-        }
-        else if (!takenObject && !inFinalPos)
+        if (!takenObject && !inFinalPos)
         {
             if (inventory.transform.childCount == 0)
             {
@@ -55,14 +34,21 @@ public class PickupObject : MonoBehaviour
             }
         }
     }
+    public void TryDropOff()
+    {
+        if (takenObject)
+        {
+            DoDropOff();
+        }
+    }
 
     private void DoPickUp()
     {
         Debug.Log("Object Taken");
         takenObject = true;
 
-        this.transform.SetParent(inventory.transform);
-        this.transform.localPosition = Vector3.zero;
+        inventory.GetComponent<InventoryManager>().AddPickup(this);
+
         Debug.Log("Object Taken FOR SURE");
         OnPickedUp();
     }
@@ -92,6 +78,7 @@ public class PickupObject : MonoBehaviour
 
             playerScore.playerScored(100);
 
+            inventory.GetComponent<InventoryManager>().DropPickup();
             OnDroppedOff();
         }
     }

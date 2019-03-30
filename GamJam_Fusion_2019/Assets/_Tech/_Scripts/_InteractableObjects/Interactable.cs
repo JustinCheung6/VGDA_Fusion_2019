@@ -6,37 +6,26 @@ using System;
 public class Interactable : MonoBehaviour
 {
     // public delegate void Action();
-    public Action OnInteractPickUp;
-
-    public Action OnInteractOpenDoor;
+    public Action OnInteract;
 
     [SerializeField] private GameObject player;
 
     // Distance from the center of the object that allows the player to interact with
     [SerializeField] private float bufferDistance = 6f;
-    private float distanceBetweenX;
-    private float distanceBetweenZ;
+
+    public string InputButtonName = "LeftClick";
 
     void FixedUpdate()
     {
-        distanceBetweenX = Mathf.Abs(player.transform.position.x - transform.position.x);
-        distanceBetweenZ = Mathf.Abs(player.transform.position.z - transform.position.z);
+        float distanceBetweenX = Mathf.Abs(player.transform.position.x - transform.position.x);
+        float distanceBetweenZ = Mathf.Abs(player.transform.position.z - transform.position.z);
 
-        if (Input.GetButtonDown("LeftClick") )
+        if (Input.GetButtonDown(InputButtonName))
         {
             //Debug.Log("Left mouse click");
             if ((distanceBetweenZ < bufferDistance)&&(distanceBetweenX < bufferDistance)) {
-                if(OnInteractPickUp != null)
-                    OnInteractPickUp();
-            }
-        }
-        if (Input.GetButtonDown("RightClick"))
-        {
-            //Debug.Log("Right mouse click");
-            if ((distanceBetweenZ < bufferDistance) && (distanceBetweenX < bufferDistance))
-            {
-                if (OnInteractOpenDoor != null)
-                    OnInteractOpenDoor();
+                if(OnInteract != null)
+                    OnInteract();
             }
         }
     }
