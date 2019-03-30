@@ -51,8 +51,6 @@ public class PickupObject : MonoBehaviour
             else {
                 Debug.Log("Already holding something");
             }
-            //player.GetComponent<THING HOLDER > ().isHoldingSomething;
-            
         }
     }
 
