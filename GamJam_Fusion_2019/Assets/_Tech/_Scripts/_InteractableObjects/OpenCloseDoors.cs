@@ -28,7 +28,9 @@ public class OpenCloseDoors : MonoBehaviour
             //Debug.Log("Closed door");
             isOpen = false;
             var child = transform.GetChild(transform.childCount - 1);
-            child.gameObject.SetActive(false);
+            if (child.gameObject == GetComponent<Wasabi>() || child.gameObject == GetComponent<Tuna>()) {
+                child.gameObject.SetActive(false);
+            }
             OnCloseDoor();
         }
         else
@@ -36,7 +38,10 @@ public class OpenCloseDoors : MonoBehaviour
             //Debug.Log("Opened door");
             isOpen = true;
             var child = transform.GetChild(transform.childCount - 1);
-            child.gameObject.SetActive(true);
+            if (child.gameObject == GetComponent<Wasabi>() || child.gameObject == GetComponent<Tuna>())
+            {
+                child.gameObject.SetActive(false);
+            }
             OnCloseDoor();
 
             OnOpenDoor();

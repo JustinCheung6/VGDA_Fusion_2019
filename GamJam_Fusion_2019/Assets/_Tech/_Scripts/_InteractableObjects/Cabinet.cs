@@ -13,6 +13,9 @@ public class Cabinet : OpenCloseDoors
     {
         base.OnOpenDoor();
         Debug.Log("Cabinet Opened");
+        GameObject wasabiClone = Instantiate(transform.GetChild(transform.childCount - 1).gameObject);
+        wasabiClone.transform.position = transform.GetChild(transform.childCount - 1).position;
+        wasabiClone.transform.SetParent(transform);
         leftDoor.SetBool("doorOpened", true);
         rightDoor.SetBool("doorOpened", true);
     }

@@ -14,7 +14,7 @@ public class Ticker : MonoBehaviour
 
     private float timeLeft = 0;
     [SerializeField]
-    private float maxTime = 10;
+    private float maxTime = 10f;
 
     //eat my candy ass
 

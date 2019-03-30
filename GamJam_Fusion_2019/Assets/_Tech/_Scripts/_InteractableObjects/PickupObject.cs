@@ -16,7 +16,6 @@ public class PickupObject : MonoBehaviour
     public Score playerScore;
 
     [SerializeField] private string name = "NAME";
-    [SerializeField] private int quantity = 1;
     [SerializeField] private float meterChange = 0f;
     [SerializeField] private GameObject player;
     [SerializeField] private GameObject inventory;
@@ -59,12 +58,12 @@ public class PickupObject : MonoBehaviour
 
     private void DoPickUp()
     {
-        //Debug.Log("Object Taken");
+        Debug.Log("Object Taken");
         takenObject = true;
 
         this.transform.SetParent(inventory.transform);
         this.transform.localPosition = Vector3.zero;
-
+        Debug.Log("Object Taken FOR SURE");
         OnPickedUp();
     }
 
@@ -72,9 +71,11 @@ public class PickupObject : MonoBehaviour
     {
         float dropOffDistanceBetweenX = Mathf.Abs(player.transform.position.x - dropOffZone.transform.position.x);
         float dropOffDistanceBetweenZ = Mathf.Abs(player.transform.position.z - dropOffZone.transform.position.z);
+        Debug.Log("X Distance: " + dropOffDistanceBetweenX);
+        Debug.Log("Z Distance: " + dropOffDistanceBetweenZ);
         if ((dropOffDistanceBetweenX < bufferDistance) && (dropOffDistanceBetweenZ < bufferDistance))
         {
-            //Debug.Log("Object Placed");
+            Debug.Log("Object Placed");
             float offset = (float)dropOffZone.transform.position.y + 0.5f;
             transform.position = new Vector3(dropOffZone.transform.position.x, offset, dropOffZone.transform.position.z);
             takenObject = false;
@@ -97,7 +98,6 @@ public class PickupObject : MonoBehaviour
 
     public virtual void OnPickedUp()
     {
-
     }
     public virtual void OnDroppedOff()
     {

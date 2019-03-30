@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Tuna : PickupObject
 {
-
     public override void OnPickedUp()
     {
         base.OnPickedUp();

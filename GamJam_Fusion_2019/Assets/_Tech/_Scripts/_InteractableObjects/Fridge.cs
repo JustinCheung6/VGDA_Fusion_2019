@@ -9,6 +9,9 @@ public class Fridge : OpenCloseDoors
     
     public override void OnOpenDoor() {
         base.OnOpenDoor();
+        GameObject tunaClone = Instantiate(transform.GetChild(transform.childCount - 1).gameObject);
+        tunaClone.transform.position = transform.GetChild(transform.childCount - 1).position;
+        tunaClone.transform.SetParent(transform);
         Debug.Log("Fridge Opened");
         FridgeDoor.SetBool("doorOpened", true);
         
