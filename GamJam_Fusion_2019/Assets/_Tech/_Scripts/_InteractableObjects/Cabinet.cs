@@ -2,34 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Cabinet : MonoBehaviour
+public class Cabinet : OpenCloseDoors
 {
-    public Interactable interactable;
-    private bool isOpen = false;
-
-    private void OnEnable()
+    public override void OnOpenDoor()
     {
-        if (interactable == null)
-        {
-            interactable = GetComponent<Interactable>();
-        }
-        interactable.OnInteract += handleDoorCab;
+        base.OnOpenDoor();
+        Debug.Log("Cabinet Opened");
     }
 
-    private void OnDisable()
+    public override void OnCloseDoor()
     {
-        interactable.OnInteract -= handleDoorCab;
-    }
-
-    private void handleDoorCab() {
-        if (isOpen)
-        {
-            Debug.Log("Closed cabinet door");
-            isOpen = false;
-        }
-        else {
-            Debug.Log("Opened cabinet door");
-            isOpen = true;
-        }
+        base.OnCloseDoor();
+        Debug.Log("Cabinet Closed");
     }
 }

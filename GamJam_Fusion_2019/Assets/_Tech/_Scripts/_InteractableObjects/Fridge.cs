@@ -2,34 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Fridge : MonoBehaviour
+public class Fridge : OpenCloseDoors
 {
-    public Interactable interactable;
-    private bool isOpen = false;
-
-    private void OnEnable()
-    {
-        if (interactable == null)
-        {
-            interactable = GetComponent<Interactable>();
-        }
-        interactable.OnInteract += handleDoorFridge;
+    public override void OnOpenDoor() {
+        base.OnOpenDoor();
+        Debug.Log("Fridge Opened");
     }
 
-    private void OnDisable()
+    public override void OnCloseDoor()
     {
-        interactable.OnInteract -= handleDoorFridge;
-    }
-
-    private void handleDoorFridge() {
-        if (isOpen)
-        {
-            Debug.Log("Closed fridge door");
-            isOpen = false;
-        }
-        else {
-            Debug.Log("Opened fridge door");
-            isOpen = true;
-        }
+        base.OnCloseDoor();
+        Debug.Log("Fridge Closed");
     }
 }

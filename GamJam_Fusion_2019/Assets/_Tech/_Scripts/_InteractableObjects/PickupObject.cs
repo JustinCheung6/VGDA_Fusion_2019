@@ -11,7 +11,6 @@ public class PickupObject : MonoBehaviour
 
     private bool takenObject = false;
     private bool inFinalPos = false;
-    //private Transform transWasabi;
 
     [SerializeField] private string name = "NAME";
     [SerializeField] private int quantity = 1;
