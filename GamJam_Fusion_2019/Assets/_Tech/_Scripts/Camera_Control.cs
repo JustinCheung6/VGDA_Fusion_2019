@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Experimental.PlayerLoop;
 
 public class Camera_Control : MonoBehaviour
 {
@@ -11,7 +12,27 @@ public class Camera_Control : MonoBehaviour
 
     public RotationAxis axes = RotationAxis.MouseX;
 
-    public float minimumVert = -45.0f;
+    //public float minimumVert = -45.0f;
+    
+    [SerializeField]
+    private float minimumVert = -45.0f;
+    
+    
+/*
+
+    public float minimumVert
+    {
+        get
+        {
+            return _minimumVert;
+        } 
+        set
+        {
+            _minimumVert = minimumVert;
+        }
+    }*/
+
+
     public float maximumVert = 45.0f;
 
     public float sensHorizontal = 10.0f;
@@ -19,8 +40,17 @@ public class Camera_Control : MonoBehaviour
 
     public float _rotationX = 0;
 
-    // Update is called once per frame
-    void Update()
+    private void OnEnable()
+    {
+        UpdateHandler.UpdateOccured += CameraInputHandler;
+    }
+
+    private void OnDisable()
+    {
+        UpdateHandler.UpdateOccured -= CameraInputHandler;
+    }
+
+    private void CameraInputHandler()
     {
         if (axes == RotationAxis.MouseX) {
             transform.Rotate(0, Input.GetAxis("Mouse X") * sensHorizontal, 0);
