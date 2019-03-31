@@ -9,21 +9,22 @@ public class UIHandler : MonoBehaviour
     public Text ScoreText;
     private void OnEnable()
     {
-        ScoreText.text = Score.score.ToString();
+        //ScoreText.text = Score.score.ToString();
     }
 
     public void QuitGame()
     {
+        Debug.Log("Quit Game");
         Application.Quit();
     }
 
     public void ToMainMenu()
     {
-        SceneManager.LoadScene(2);
+        SceneManager.LoadScene(0);
     }
 
     public void RestartGame()
     {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(1);
     }
 }
