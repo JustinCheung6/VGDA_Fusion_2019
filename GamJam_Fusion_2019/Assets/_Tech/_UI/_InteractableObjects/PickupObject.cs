@@ -85,6 +85,7 @@ public class PickupObject : InteractableSubscriber
 
     public virtual void OnPickedUp()
     {
+        //Debug.Log("PickupObject class ran");
     }
     public virtual void OnDroppedOff()
     {

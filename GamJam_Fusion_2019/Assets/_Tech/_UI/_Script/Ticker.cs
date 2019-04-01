@@ -16,8 +16,6 @@ public class Ticker : MonoBehaviour
     [SerializeField]
     private float maxTime = 10f;
 
-    //eat my candy ass
-
     private void Start()
     {
         currentTicker = GetComponent<Image>();

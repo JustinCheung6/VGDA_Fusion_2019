@@ -15,7 +15,17 @@ public class Interactable : MonoBehaviour
 
     public string InputButtonName = "LeftClick";
 
-    void FixedUpdate()
+    private void OnEnable()
+    {
+        UpdateHandler.UpdateOccurred += CalculteDistance;
+    }
+
+    private void OnDisable()
+    {
+        UpdateHandler.UpdateOccurred -= CalculteDistance;
+    }
+
+    private void CalculteDistance()
     {
         float distanceBetweenX = Mathf.Abs(player.transform.position.x - transform.position.x);
         float distanceBetweenZ = Mathf.Abs(player.transform.position.z - transform.position.z);
